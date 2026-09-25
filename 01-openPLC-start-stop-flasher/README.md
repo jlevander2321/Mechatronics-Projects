@@ -44,7 +44,7 @@ https://github.com/user-attachments/assets/9763dca3-9098-405a-b3b5-6d1c204e3448
 
 ## Wiring
 
-![Wiring diagram](wiring-diagram.svg)
+![Wiring diagram](start-stop-flasher.svg)
 
 *Schematic made in KiCad. Source files: [`start-stop-flasher.kicad_sch`](start-stop-flasher.kicad_sch) and [`start-stop-flasher.kicad_pro`](start-stop-flasher.kicad_pro).*
 
@@ -77,7 +77,7 @@ https://github.com/user-attachments/assets/9763dca3-9098-405a-b3b5-6d1c204e3448
 
 <img alt="Ladder program in OpenPLC Editor" src="https://github.com/user-attachments/assets/efe8609b-00c6-40fc-9e5f-d73fc29e79a6" />
 
-*Four rungs: seal-in, Timer 1, Timer 2, and LED output. Full program in `plc.xml`.*
+*Four rungs: seal-in, Timer 1, Timer 2, and LED output. Full program in the [`openplc-project`](openplc-project) folder.*
 
 ---
 
@@ -192,8 +192,7 @@ The textbook formula, (3.3 V − 1.92 V) ÷ 220 Ω, predicts 6.27 mA. The measur
 
 | File | Description |
 |------|-------------|
-| `plc.xml` | OpenPLC Editor project file |
-| `beremiz.xml` | OpenPLC Editor project settings |
-| `wiring-diagram.svg` | Wiring diagram |
+| `openplc-project/` | Full OpenPLC Editor project (open this folder in OpenPLC Editor) |
+| `start-stop-flasher.svg` | Wiring diagram |
 | `start-stop-flasher.kicad_sch` | KiCad schematic source |
 | `start-stop-flasher.kicad_pro` | KiCad project file |
