@@ -25,7 +25,7 @@ A PLC-style start/stop control system built on an ESP32 running OpenPLC. A seal-
 
 ## Demo
 
-<!-- In the GitHub editor, drag flasher-demo.mp4 onto this line. GitHub will insert the video link here. -->
+https://github.com/user-attachments/assets/9763dca3-9098-405a-b3b5-6d1c204e3448
 
 ---
 
@@ -50,7 +50,8 @@ A PLC-style start/stop control system built on an ESP32 running OpenPLC. A seal-
 - **Stop button:** one side to 3.3 V, the other side to GPIO 19. A 10 kΩ resistor goes from GPIO 19 to GND.
 - **LED:** GPIO 5 to the [R] Ω resistor, resistor to the LED anode, LED cathode to GND.
 
-![Breadboard with pull-down resistors](pulldown-wiring.jpg)
+!<img width="3024" height="4032" alt="IMG_4897" src="https://github.com/user-attachments/assets/128b830d-5d33-46b5-b612-bcb634254d3e" />
+(pulldown-wiring.jpg)
 
 ---
 
