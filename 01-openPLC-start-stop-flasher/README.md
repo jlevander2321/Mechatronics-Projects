@@ -36,22 +36,23 @@ https://github.com/user-attachments/assets/9763dca3-9098-405a-b3b5-6d1c204e3448
 | ESP32 dev board (ELEGOO) | 1 | Runs the OpenPLC runtime |
 | Pushbutton, normally open | 2 | Start and Stop inputs |
 | 10 kΩ resistor | 2 | Pull-downs for the button inputs |
-| LED ([color]) | 1 | Output indicator |
-| [R] Ω resistor | 1 | LED current limiting |
+| LED (red) | 1 | Output indicator |
+| 220 Ω resistor | 1 | LED current limiting |
 | Breadboard and jumper wires | | Connections |
 
 ---
 
 ## Wiring
 
-![Wiring diagram](wiring-diagram.png)
+![Wiring diagram](wiring-diagram.svg)
+
+*Schematic made in KiCad. Source files: [`start-stop-flasher.kicad_sch`](start-stop-flasher.kicad_sch) and [`start-stop-flasher.kicad_pro`](start-stop-flasher.kicad_pro).*
 
 - **Start button:** one side to 3.3 V, the other side to GPIO 18. A 10 kΩ resistor goes from GPIO 18 to GND.
 - **Stop button:** one side to 3.3 V, the other side to GPIO 19. A 10 kΩ resistor goes from GPIO 19 to GND.
-- **LED:** GPIO 5 to the [R] Ω resistor, resistor to the LED anode, LED cathode to GND.
+- **LED:** GPIO 5 to the 220 Ω resistor, resistor to the LED anode, LED cathode to GND.
 
-!<img width="3024" height="4032" alt="IMG_4897" src="https://github.com/user-attachments/assets/128b830d-5d33-46b5-b612-bcb634254d3e" />
-(pulldown-wiring.jpg)
+<img width="400" alt="Breadboard wiring with pull-down resistors" src="https://github.com/user-attachments/assets/128b830d-5d33-46b5-b612-bcb634254d3e" />
 
 ---
 
@@ -68,40 +69,15 @@ https://github.com/user-attachments/assets/9763dca3-9098-405a-b3b5-6d1c204e3448
 | Timer 1 | TON | | | `T1` |
 | Timer 2 | TON | | | `T2` |
 
-![OpenPLC variable table](variable-table.png)
+<img alt="OpenPLC variable table" src="https://github.com/user-attachments/assets/54bf9e0a-ed38-4a12-8022-5c3d1bc08da7" />
 
 ---
 
 ## Ladder Program
 
-```
-Rung 1: Start/Stop seal-in
-       start          stop
- |-----[ ]-----+-----[/]------------------------( RUN )-----|
-               |
-        RUN    |
- |-----[ ]-----+
+<img alt="Ladder program in OpenPLC Editor" src="https://github.com/user-attachments/assets/efe8609b-00c6-40fc-9e5f-d73fc29e79a6" />
 
-Rung 2: Timer 1 (OFF time)
-        RUN         T2_DONE      +-------------+
- |-----[ ]-----------[/]---------| T1  TON     |--( T1_DONE )-----|
-                                 | PT = 500 ms |
-                                 +-------------+
-
-Rung 3: Timer 2 (ON time)
-      T1_DONE                    +-------------+
- |-----[ ]-----------------------| T2  TON     |--( T2_DONE )-----|
-                                 | PT = 500 ms |
-                                 +-------------+
-
-Rung 4: LED output
-      T1_DONE
- |-----[ ]--------------------------------------( light )-----|
-```
-
-`[ ]` = normally open contact · `[/]` = normally closed contact · `( )` = coil
-
-![Ladder program in OpenPLC Editor](ladder-program.png)
+*Four rungs: seal-in, Timer 1, Timer 2, and LED output. Full program in `plc.xml`.*
 
 ---
 
@@ -132,11 +108,11 @@ The LED stays off for the first 500 ms after Start because T1 has to finish befo
 
 | # | Test | Expected | Result |
 |---|------|----------|--------|
-| 1 | Press and release Start | LED flashes and keeps flashing after release | Pass. Measured [X] ms on, [Y] ms off |
+| 1 | Press and release Start | LED flashes and keeps flashing after release | Pass. Measured 0.98 s per full cycle (1.0 s expected) |
 | 2 | Press Stop while flashing | LED turns off and stays off | Pass |
 | 3 | Hold Start and Stop together | Nothing happens (Stop priority) | Pass |
 
-**How I measured timing:** I recorded the LED in slow motion at [frame rate] fps and counted frames between LED on and LED off over [N] cycles.
+**How I measured timing:** I timed 10 full on/off cycles with a stopwatch in one run and divided by 10. Timing multiple cycles spreads my reaction-time error across all 10, so each cycle is accurate to about ±0.03 s. The measured 0.98 s is within that error of the expected 1.0 s.
 
 ---
 
@@ -166,17 +142,28 @@ The LED stays off for the first 500 ms after Start because T1 has to finish befo
 
 ### Why the Stop contact is normally closed in the ladder
 
-The physical Stop button is normally open, so the `stop` input reads 0 until it's pressed. In the ladder, Stop uses a normally closed contact `[/]`. That contact passes power while `stop` is 0 and breaks the rung when `stop` goes to 1.
+The physical Stop button is normally open, so the `stop` input reads 0 until it's pressed. In the ladder, Stop uses a normally closed contact. That contact passes power while `stop` is 0 and breaks the rung when `stop` goes to 1.
 
 ### Why 10 kΩ pull-downs
 
 When a button is pressed, current flows from 3.3 V through the pull-down to GND. At 10 kΩ, that's 3.3 V / 10 kΩ = 0.33 mA, which is tiny. A much smaller resistor like 100 Ω would draw 33 mA every press and waste power. A much larger resistor like 1 MΩ would hold the input LOW so weakly that noise could still flip it. 10 kΩ sits between those extremes.
 
-### LED resistor
+The ESP32 has internal 45 kΩ pull-down resistors, but I used external 10 kΩ resistors instead. A lower resistance holds the input LOW more firmly against noise, and an external resistor works no matter how the firmware is configured. Using the internal ones would have required changing the firmware setup instead of just wiring a resistor.
 
-R = (V_pin - V_LED) / I = (3.3 V - [V_LED] V) / [I] A = [R] Ω
+### LED current (measured)
 
-With [R] Ω, the LED draws about [I] mA, which is under the ESP32's GPIO current rating of [limit] mA from the datasheet.
+I measured the voltages with the LED on:
+
+| Measurement | Value |
+|-------------|-------|
+| LED forward voltage | 1.920 V |
+| Resistor voltage | 1.243 V |
+| Resistor | 220 Ω |
+| **LED current** (1.243 V ÷ 220 Ω) | **5.65 mA** |
+
+The textbook formula, (3.3 V − 1.92 V) ÷ 220 Ω, predicts 6.27 mA. The measured current came out lower because the pin only delivered about 3.16 V under load instead of a full 3.3 V. That drop is within spec. The datasheet only guarantees the pin stays above 0.8 × 3.3 V = 2.64 V while sourcing current.
+
+5.65 mA is far below the 40 mA typical high-level source current that Espressif's ESP32 Series Datasheet lists for the VDD3P3_CPU power domain (measured at maximum drive strength).
 
 ---
 
@@ -197,6 +184,7 @@ With [R] Ω, the LED draws about [I] mA, which is under the ESP32's GPIO current
 - Why floating inputs happen and how pull-down resistors fix them
 - How IEC 61131-3 data types match PLC addresses (`BOOL` to `%IX` and `%QX`)
 - Why real stop circuits are wired normally closed
+- How to measure real circuit values and compare them to the datasheet
 
 ---
 
@@ -205,8 +193,7 @@ With [R] Ω, the LED draws about [I] mA, which is under the ESP32's GPIO current
 | File | Description |
 |------|-------------|
 | `plc.xml` | OpenPLC Editor project file |
-| `[program].st` | Generated Structured Text for the OpenPLC runtime |
-| `wiring-diagram.png` | Wiring diagram |
-| `ladder-program.png` | Screenshot of the ladder program |
-| `variable-table.png` | Screenshot of the OpenPLC variable table |
-| `pulldown-wiring.jpg` | Photo of the breadboard wiring |
+| `beremiz.xml` | OpenPLC Editor project settings |
+| `wiring-diagram.svg` | Wiring diagram |
+| `start-stop-flasher.kicad_sch` | KiCad schematic source |
+| `start-stop-flasher.kicad_pro` | KiCad project file |
