@@ -50,7 +50,9 @@ Floating Inputs
 
 One problem I had was that the inputs were floating when the buttons were not being pressed. Touching the board could cause the LED to change because the ESP32 input could pick up electrical noise. I fixed this by adding a 10 kΩ pull-down resistor to each pushbutton input. The pull-down resistors keep the inputs at a known LOW state when the buttons are not pressed.
 
-(INSERT WIRING PHOTO SHOWING PULL-DOWN RESISTORS HERE)
+<img width="3024" height="4032" alt="IMG_4897" src="https://github.com/user-attachments/assets/0f6e3fe9-4a45-4ee9-880c-e12ea65c9e19" />
+
+
 
 DINT Location Error
 
@@ -70,7 +72,11 @@ Second, I pressed the Stop button. The LED stopped flashing and went dark.
 
 Third, I held both the Start and Stop buttons at the same time. Nothing happened because the Stop button has priority over Start.
 
-(INSERT TEST VIDEO HERE)
+
+
+https://github.com/user-attachments/assets/cd3c86bc-f57a-4897-b2e9-d6895bd95f69
+
+
 
 Honest Limitations
 
