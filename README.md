@@ -1,4 +1,4 @@
-# Mechatronics-Projects
+# Mechatronics Projects
 
 I'm Josh Levander, a Mechatronics Engineering Technology student at PennWest California (Class of 2029). Every project here is something I built, tested, and measured myself, including what went wrong and how I fixed it.
 
@@ -10,4 +10,4 @@ I'm Josh Levander, a Mechatronics Engineering Technology student at PennWest Cal
 
 ## Contact
 
-lev80891@pennwest.edu · [linkedIn]
+lev80891@pennwest.edu 
