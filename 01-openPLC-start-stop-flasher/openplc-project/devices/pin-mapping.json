@@ -1,0 +1,22 @@
+{
+  "ESP32 Generic": [
+    {
+      "pin": "18",
+      "pinType": "digitalInput",
+      "address": "%IX0.0",
+      "alias": "start"
+    },
+    {
+      "pin": "19",
+      "pinType": "digitalInput",
+      "address": "%IX0.1",
+      "alias": "stop"
+    },
+    {
+      "pin": "05",
+      "pinType": "digitalOutput",
+      "address": "%QX0.0",
+      "alias": "light"
+    }
+  ]
+}
