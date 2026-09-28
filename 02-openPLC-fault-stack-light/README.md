@@ -175,15 +175,15 @@ All nine tests are shown in the [demo video](#demo) at the top.
 
 | # | Test | Expected | Result | 
 |---|------|----------|--------|
-| 1 | Power on | Yellow only | | 
-| 2 | Press Start | Green only | | 
-| 3 | Press Stop while running | Yellow only | | 
-| 4 | Slide Fault while running | Red only, green turns off | | 
-| 5 | Slide Fault while stopped | Red only | | 
-| 6 | Press Reset with Fault still active | Red stays on | | 
-| 7 | Clear Fault, then press Reset | Yellow, not green | | 
-| 8 | Press Start while faulted | Nothing happens | | 
-| 9 | Hold Start and Stop together | Stays yellow | | 
+| 1 | Power on | Yellow only | Pass | 
+| 2 | Press Start | Green only | Pass | 
+| 3 | Press Stop while running | Yellow only | Pass | 
+| 4 | Slide Fault while running | Red only, green turns off | Pass | 
+| 5 | Slide Fault while stopped | Red only | Pass | 
+| 6 | Press Reset with Fault still active | Red stays on | Pass | 
+| 7 | Clear Fault, then press Reset | Yellow, not green | Pass | 
+| 8 | Press Start while faulted | Nothing happens | Pass | 
+| 9 | Hold Start and Stop together | Stays yellow | Pass | 
 
 ---
 
