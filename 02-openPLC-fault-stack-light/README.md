@@ -33,8 +33,6 @@ A PLC-style machine stack light built on an ESP32 running OpenPLC. Green means r
 
 ## State Diagram
 
-\\INSERT STATE DIAGRAM DRAWING
-
 I drew the state diagram before wiring anything or writing any ladder logic.
 
 | Transition | From | To |
