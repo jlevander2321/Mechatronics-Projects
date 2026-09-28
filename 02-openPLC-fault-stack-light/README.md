@@ -33,7 +33,7 @@ A PLC-style machine stack light built on an ESP32 running OpenPLC. Green means r
 
 ## State Diagram
 
-![State diagram](state-diagram.drawio.png)
+![State diagram](Project-02-folder-name/statediagram02.png)
 
 I drew the state diagram before wiring anything or writing any ladder logic.
 
