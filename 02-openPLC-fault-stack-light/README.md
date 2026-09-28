@@ -76,7 +76,7 @@ There is no path between FAULTED and RUNNING in either direction. A fault can't 
 *Schematic made in KiCad. Source files: [`project02-fault-stack-light.kicad_sch`](project02-fault-stack-light.kicad_sch) and [`project02-fault-stack-light.kicad_pro`](project02-fault-stack-light.kicad_pro).*
 
 - **Buttons:** one side to 3.3 V, the other side to the GPIO pin. A 10 kΩ pull-down goes from the GPIO pin to GND.
-- **Fault switch:** middle leg to GPIO 35, one outer leg to 3.3 V, the other outer leg unconnected. A 10 kΩ pull-down goes from GPIO 35 to GND. In the healthy position, the switch connects 3.3 V to the pin.
+- **Fault switch:** middle leg (pin 2) to 3.3 V, pin 1 to GPIO 35, pin 3 unconnected. A 10 kΩ pull-down goes from GPIO 35 to GND. In the healthy position, the switch connects 3.3 V to GPIO 35. In the fault position, the pull-down holds GPIO 35 at 0 V.
 - **LEDs:** each GPIO output goes through its own resistor to the LED anode. The cathode goes to GND.
 - **Power:** all inputs use the ESP32's 3V3 pin through the breadboard's power rails. VIN sits at about 5 V on USB power and is not used, because the ESP32's inputs are 3.3 V only.
 
@@ -198,6 +198,11 @@ Each LED was tested by moving its jumper from the GPIO pin to the 3.3 V rail. Al
 - **Problem:** The program failed to compile with errors like 'VP' was not declared in this scope.
 - **Cause:** I entered the board's printed labels (VP, VN, RX2) as pin names. OpenPLC turns the pin mapping into C code, and the compiler only understands plain GPIO numbers.
 - **Fix:** I changed every pin to its GPIO number (36, 39, 34, 35, 16, 17, 18), and it compiled.
+
+### 4. Fault input floated in the fault position
+- **Problem:** While drawing the KiCad schematic, I noticed GPIO 35 wasn't connected to anything when the fault switch was in the fault position.
+- **Cause:** I had the 10 kΩ resistor on the switch's third pin instead of on the GPIO 35 node. In the healthy position, the switch connected 3.3 V to GPIO 35, which worked. In the fault position, the switch sent 3.3 V through the resistor to GND, and GPIO 35 was left floating. GPIO 34 to 39 have no internal pull resistors, so a floating pin can read 0 or 1 at random. My I/O checkout still passed, because the pin happened to read 0 V when I measured it.
+- **Fix:** I moved the 10 kΩ pull-down to go from GPIO 35 to GND, the same as the other three inputs, and left the third pin unconnected. I re-measured 3.3 V healthy and 0 V faulted. Now a real fault or a broken wire always reads 0, which is what makes the input fail-safe.
 
 ---
 
