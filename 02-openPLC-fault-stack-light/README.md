@@ -72,7 +72,8 @@ There is no path between FAULTED and RUNNING in either direction. A fault can't 
 
 ## Wiring
 
-\\ADD KICAD SCHEMATIC SVG AND CAPTION WITH SOURCE FILE LINKS
+![Wiring diagram](project02-fault-stack-light.svg)
+*Schematic made in KiCad. Source files: [`project02-fault-stack-light.kicad_sch`](project02-fault-stack-light.kicad_sch) and [`project02-fault-stack-light.kicad_pro`](project02-fault-stack-light.kicad_pro).*
 
 - **Buttons:** one side to 3.3 V, the other side to the GPIO pin. A 10 kΩ pull-down goes from the GPIO pin to GND.
 - **Fault switch:** middle leg to GPIO 35, one outer leg to 3.3 V, the other outer leg unconnected. A 10 kΩ pull-down goes from GPIO 35 to GND. In the healthy position, the switch connects 3.3 V to the pin.
