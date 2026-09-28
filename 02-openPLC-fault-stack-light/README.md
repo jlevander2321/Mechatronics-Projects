@@ -80,7 +80,7 @@ There is no path between FAULTED and RUNNING in either direction. A fault can't 
 - **LEDs:** each GPIO output goes through its own resistor to the LED anode. The cathode goes to GND.
 - **Power:** all inputs use the ESP32's 3V3 pin through the breadboard's power rails. VIN sits at about 5 V on USB power and is not used, because the ESP32's inputs are 3.3 V only.
 
-<img width="3024" height="4032" alt="IMG_4921" src="https://github.com/user-attachments/assets/9305266d-9e9e-4209-8695-377f0b2f5603" />
+<img width="400" height="4032" alt="BreadBoard Wiring" src="https://github.com/user-attachments/assets/9305266d-9e9e-4209-8695-377f0b2f5603" />
 
 
 ---
