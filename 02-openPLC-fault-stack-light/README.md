@@ -27,7 +27,9 @@ A PLC-style machine stack light built on an ESP32 running OpenPLC. Green means r
 
 ## Demo
 
-\\INSERT DEMO TEST VIDEOS
+[![Demo video](demo-thumbnail.png)](https://youtu.be/YOUR_LINK)
+
+*All nine logic tests. Click to watch on YouTube.*
 
 --- 
 
@@ -169,6 +171,7 @@ Before writing any ladder logic, I verified every input and output with a multim
 Each LED was tested by moving its jumper from the GPIO pin to the 3.3 V rail. All three lit. The power rails measured 3.3 V.
 
 ### Logic tests
+All nine tests are shown in the [demo video](#demo) at the top.
 
 | # | Test | Expected | Result | 
 |---|------|----------|--------|
