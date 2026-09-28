@@ -27,7 +27,7 @@ A PLC-style machine stack light built on an ESP32 running OpenPLC. Green means r
 
 ## Demo
 
-[![Demo video](demo-thumbnail.png)](https://youtu.be/YOUR_LINK)
+[![Demo video](demo-thumbnail.png)](https://www.youtube.com/watch?v=IN1dvcHp1h0)
 
 *All nine logic tests. Click to watch on YouTube.*
 
