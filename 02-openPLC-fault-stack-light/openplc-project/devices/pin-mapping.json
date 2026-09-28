@@ -1,0 +1,46 @@
+{
+  "ESP32 Generic": [
+    {
+      "pin": "36",
+      "pinType": "digitalInput",
+      "address": "%IX0.0",
+      "alias": "START"
+    },
+    {
+      "pin": "39",
+      "pinType": "digitalInput",
+      "address": "%IX0.1",
+      "alias": "STOP"
+    },
+    {
+      "pin": "34",
+      "pinType": "digitalInput",
+      "address": "%IX0.2",
+      "alias": "RESET"
+    },
+    {
+      "pin": "35",
+      "pinType": "digitalInput",
+      "address": "%IX0.3",
+      "alias": "FAULT"
+    },
+    {
+      "pin": "16",
+      "pinType": "digitalOutput",
+      "address": "%QX0.0",
+      "alias": "GREEN_LED"
+    },
+    {
+      "pin": "17",
+      "pinType": "digitalOutput",
+      "address": "%QX0.1",
+      "alias": "YELLOW_LED"
+    },
+    {
+      "pin": "18",
+      "pinType": "digitalOutput",
+      "address": "%QX0.2",
+      "alias": "RED_LED"
+    }
+  ]
+}
