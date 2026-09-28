@@ -1,0 +1,16 @@
+{
+  "deviceBoard": "ESP32 Generic",
+  "communicationPort": "COM3",
+  "runtimeIpAddress": "",
+  "vendorScreenData": {},
+  "vendorScreenDataByBoard": {
+    "OpenPLC Simulator": {},
+    "ESP32 Generic": {},
+    "ESP32-C6-DevKitC-1 V1.2": {},
+    "ESP32 WROOM": {},
+    "ESP32 WROVER": {},
+    "ESP32-DOIT DEVKIT V1": {},
+    "ESP32-S3": {}
+  },
+  "selectedPlatformOptions": {}
+}
