@@ -42,3 +42,6 @@ run = (start OR run) AND NOT stop. The `run` contact in parallel with `start` ho
 In simulation, stop is a momentary NO input, so the logic uses an NC contact.
 On real hardware, wire the stop button NC and use a NO contact in logic.
 That way a broken stop wire stops the motor instead of leaving it unstoppable.
+
+## Files
+- `seal-in-project.zip`: OpenPLC Editor project. Unzip it and open the `seal-in` folder in OpenPLC Editor. The ladder program is `pous/programs/main.ld`.
