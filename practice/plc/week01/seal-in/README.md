@@ -20,7 +20,7 @@ run = (start OR run) AND NOT stop. The `run` contact in parallel with `start` ho
 | 1 | Press start | run = 1 | Pass |
 | 2 | Release start | run stays 1 | Pass |
 | 3 | Press stop | run = 0 | Pass |
-| 4 | Hold stop, press start | run stays 0 (stop wins) | Pending |
+| 4 | Hold stop, press start | run stays 0 (stop wins) | Pass |
 
 **Step 1: start pressed.** start = TRUE, run = TRUE.
 
@@ -33,6 +33,10 @@ run = (start OR run) AND NOT stop. The `run` contact in parallel with `start` ho
 **Step 3: stop pressed.** stop = TRUE opens the NC contact, run = FALSE.
 
 ![Step 3](step3-stop.png)
+
+**Step 4: stop held, start pressed (stop wins).** start = TRUE, stop = TRUE, run = FALSE. Power flows through start but the open NC stop contact blocks the coil.
+
+![Step 4](step4-stop-wins.png)
 
 ## Field-wiring note
 In simulation, stop is a momentary NO input, so the logic uses an NC contact.
