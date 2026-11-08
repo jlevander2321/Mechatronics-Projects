@@ -1,3 +1,3 @@
-# AutoCAD Electrical Drawings
+# Control Schematics
 
-Control schematics, PLC I/O and panel drawings (PDF exports).
+Control schematics, PLC I/O and panel drawings drawn in QElectroTech (PDF exports + .qet project files).
