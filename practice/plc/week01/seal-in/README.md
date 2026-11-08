@@ -17,10 +17,22 @@ run = (start OR run) AND NOT stop. The `run` contact in parallel with `start` ho
 ## Test
 | Step | Action | Expected | Result |
 | --- | --- | --- | --- |
-| 1 | Pulse start | run = 1 | Pending |
-| 2 | Release start | run stays 1 | Pending |
-| 3 | Pulse stop | run = 0 | Pending |
-| 4 | Hold stop, pulse start | run stays 0 (stop wins) | Pending |
+| 1 | Press start | run = 1 | Pass |
+| 2 | Release start | run stays 1 | Pass |
+| 3 | Press stop | run = 0 | Pass |
+| 4 | Hold stop, press start | run stays 0 (stop wins) | Pending |
+
+**Step 1: start pressed.** start = TRUE, run = TRUE.
+
+![Step 1](step1-start.png)
+
+**Step 2: start released, seal-in holds.** start = FALSE, run = TRUE through the parallel `run` contact.
+
+![Step 2](step2-sealed.png)
+
+**Step 3: stop pressed.** stop = TRUE opens the NC contact, run = FALSE.
+
+![Step 3](step3-stop.png)
 
 ## Field-wiring note
 In simulation, stop is a momentary NO input, so the logic uses an NC contact.
