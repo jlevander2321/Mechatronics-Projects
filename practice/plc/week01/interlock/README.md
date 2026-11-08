@@ -57,3 +57,6 @@ The top rung gets priority. For a defined result when both buttons are pressed, 
 
 ## Field-wiring note
 This is a software interlock only. On real motor starters, such as forward/reverse contactors, also wire an electrical interlock: each contactor's NC auxiliary contact in series with the other's coil. Add a mechanical interlock where the contactors support one. That way a welded contact or a PLC fault cannot energize both.
+
+## Files
+- `interlock-project.zip`: OpenPLC Editor project. Unzip it and open the `motor interlock` folder in OpenPLC Editor. The ladder program is `pous/programs/main.ld`.
