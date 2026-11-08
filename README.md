@@ -9,6 +9,8 @@ I'm Josh Levander, a Mechatronics Engineering Technology student at PennWest Cal
 | 01 | [OpenPLC Start/Stop Flasher](01-openPLC-start-stop-flasher) | ESP32, OpenPLC, KiCad | Seal-in circuit, TON timers, pull-down inputs, measured LED current |
 | 02 | [OpenPLC Fault Stack Light](02-openPLC-fault-stack-light) | ESP32, OpenPLC, KiCad | State diagram design, fault latch with reset, fail-safe NC fault input, ESP32 pin selection |
 
+Daily practice (CAD, PLC, Multisim, AutoCAD Electrical): [practice/](practice/) · [log](log.md)
+
 ## Contact
 
 lev80891@pennwest.edu 
