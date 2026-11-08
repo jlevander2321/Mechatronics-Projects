@@ -27,7 +27,7 @@ Each rung is a seal-in with one extra NC contact: the other motor's run bit. Tha
 | 2 | With motor1 running, press start2 | motor2 stays 0 | Pass |
 | 3 | Press stop1, then start2 | motor1 = 0, motor2 = 1 | Pass |
 | 4 | With motor2 running, press start1 | motor1 stays 0 | Pass |
-| 5 | From all-off, start1 and start2 TRUE on the same scan | — | Pending |
+| 5 | From all-off, start1 and start2 TRUE on the same scan | One motor only | Pass: motor1 wins |
 
 **Test 1: start1 pressed.** motor1 = TRUE and seals in; motor2 = FALSE.
 
@@ -44,6 +44,16 @@ Each rung is a seal-in with one extra NC contact: the other motor's run bit. Tha
 **Test 4: start1 pressed while motor2 runs.** The NC motor2 contact in rung 1 is open, so motor1 stays FALSE.
 
 ![Test 4](test4-start1-blocked.png)
+
+**Test 5: start1 and start2 TRUE on the first scan.** Both starts were set to Initial Value = TRUE, so they are true together on the first scan. motor1 = TRUE, motor2 = FALSE.
+
+![Test 5](test5-same-scan.png)
+
+**Why motor1 wins:** the PLC evaluates rungs top to bottom, and an internal bit written in one rung is already updated when the next rung reads it.
+1. Rung 1 runs first. motor2 is still FALSE, so its NC contact is closed and motor1 turns on.
+2. Rung 2 runs next. motor1 is now TRUE in the same scan, so its NC contact is open and motor2 stays off.
+
+The top rung gets priority. For a defined result when both buttons are pressed, choose the rung order on purpose. To start neither motor in that case, add an NC contact of the other start button to each rung.
 
 ## Field-wiring note
 This is a software interlock only. On real motor starters, such as forward/reverse contactors, also wire an electrical interlock: each contactor's NC auxiliary contact in series with the other's coil. Add a mechanical interlock where the contactors support one. That way a welded contact or a PLC fault cannot energize both.
