@@ -31,6 +31,8 @@ R = 30 Ω, L = 20 mH, C = 39 µF, e = √2(20) sin(1000t + 40°) V → E = 20 V 
 ## Parallel RLC: Boylestad Prob. 16.13 (Fig. 16.71)
 R = 3 kΩ ∥ L = 3.9 H ∥ C = 0.12 µF, iₛ = 5 sin(1000t − 20°) mA → Iₛ = 3.536 mA ∠−20°, f = 159.15 Hz
 
+![Parallel RLC schematic](parallel-rlc-schematic.png)
+
 | Quantity | Hand | Multisim | % error |
 | --- | --- | --- | --- |
 | Zₜ | 2777 Ω ∠22.26° | 2776.5 Ω ∠22.26° (V/Iₛ) | 0.01 % |
