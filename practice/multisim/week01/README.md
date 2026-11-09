@@ -38,4 +38,9 @@ R = 3 kΩ ∥ L = 3.9 H ∥ C = 0.12 µF, iₛ = 5 sin(1000t − 20°) mA → I�
 | Iᵣ | 3.272 mA ∠2.26° | | |
 | Iₗ | 2.517 mA ∠−87.74° | | |
 | I꜀ | 1.178 mA ∠92.26° | | |
-| f₀ = 1/(2π√(LC)) | 232.6 Hz (voltage peak / impedance maximum in AC sweep) | | |
+| f₀ = 1/(2π√(LC)) | 232.62 Hz (V and Iᵣ peak; Zₜ maximum) | 232.81 Hz | 0.08 % (sweep resolution) |
+| Iᵣ at resonance = Iₛ | 3.536 mA | 3.536 mA | 0.00 % |
+
+**AC sweep, 10 Hz–1 kHz (Iᵣ = V/R):** at f₀ the L and C branch currents cancel, so all of Iₛ flows through R and Iᵣ = Iₛ. Phase runs from about +70° (inductive branch dominates) through −20° at resonance (in phase with Iₛ) to about −110° (capacitive).
+
+![Parallel RLC AC sweep](parallel-rlc-ac-sweep.png)
