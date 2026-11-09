@@ -7,6 +7,8 @@ All values are RMS phasors. Hand calculations were done first; the Multisim colu
 ## Series RLC: Boylestad Prob. 15.29 (Fig. 15.101)
 R = 30 Ω, L = 20 mH, C = 39 µF, e = √2(20) sin(1000t + 40°) V → E = 20 V ∠40°, f = 159.15 Hz
 
+![Series RLC schematic](series-rlc-schematic.png)
+
 | Quantity | Hand | Multisim | % error |
 | --- | --- | --- | --- |
 | Zₜ | 30.53 Ω ∠−10.65° | 30.53 Ω ∠−10.65° (E/I) | 0.01 % |
