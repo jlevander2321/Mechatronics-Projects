@@ -15,7 +15,12 @@ R = 30 Ω, L = 20 mH, C = 39 µF, e = √2(20) sin(1000t + 40°) V → E = 20 V 
 | Vₗ | 13.10 V ∠140.65° | | |
 | V꜀ | 16.80 V ∠−39.35° | | |
 | P | 12.88 W | | |
-| f₀ = 1/(2π√(LC)) | 180.2 Hz (current peak in AC sweep) | | |
+| f₀ = 1/(2π√(LC)) | 180.21 Hz (current peak in AC sweep) | 180.30 Hz | 0.05 % (sweep resolution) |
+| I at resonance = E/R | 0.6667 A | 0.6667 A | 0.00 % |
+
+**AC sweep, 10 Hz–1 kHz:** the current peaks at f₀, where Xₗ = X꜀ and Zₜ = R. Phase runs from +130° (capacitive, I leads E) through 40° at resonance (in phase with E) to −50° (inductive, I lags E).
+
+![Series RLC AC sweep](series-rlc-ac-sweep.png)
 
 ## Parallel RLC: Boylestad Prob. 16.13 (Fig. 16.71)
 R = 3 kΩ ∥ L = 3.9 H ∥ C = 0.12 µF, iₛ = 5 sin(1000t − 20°) mA → Iₛ = 3.536 mA ∠−20°, f = 159.15 Hz
