@@ -9,14 +9,18 @@ R = 30 Ω, L = 20 mH, C = 39 µF, e = √2(20) sin(1000t + 40°) V → E = 20 V 
 
 | Quantity | Hand | Multisim | % error |
 | --- | --- | --- | --- |
-| Zₜ | 30.53 Ω ∠−10.65° | | |
-| I | 0.655 A ∠50.65° | | |
-| Vᵣ | 19.66 V ∠50.65° | | |
-| Vₗ | 13.10 V ∠140.65° | | |
-| V꜀ | 16.80 V ∠−39.35° | | |
-| P | 12.88 W | | |
+| Zₜ | 30.53 Ω ∠−10.65° | 30.53 Ω ∠−10.65° (E/I) | 0.01 % |
+| I | 0.655 A ∠50.65° | 0.6552 A ∠50.65° | 0.00 % |
+| Vᵣ | 19.66 V ∠50.65° | 19.655 V ∠50.65° | 0.02 % |
+| Vₗ | 13.10 V ∠140.65° | 13.103 V ∠140.65° | 0.02 % |
+| V꜀ | 16.80 V ∠−39.35° | 16.800 V ∠−39.35° | 0.00 % |
+| P | 12.88 W | 12.88 W (I²R) | 0.02 % |
 | f₀ = 1/(2π√(LC)) | 180.21 Hz (current peak in AC sweep) | 180.30 Hz | 0.05 % (sweep resolution) |
 | I at resonance = E/R | 0.6667 A | 0.6667 A | 0.00 % |
+
+**Single Frequency AC analysis at 159.15 Hz:** node 3 is the source (+), so Vᵣ = V(3) − V(2), Vₗ = V(2) − V(1), V꜀ = V(1). All errors are below 0.03 %, which is rounding in the hand calculation.
+
+![Series RLC single-frequency AC](series-rlc-single-freq.png)
 
 **AC sweep, 10 Hz–1 kHz:** the current peaks at f₀, where Xₗ = X꜀ and Zₜ = R. Phase runs from +130° (capacitive, I leads E) through 40° at resonance (in phase with E) to −50° (inductive, I lags E).
 
