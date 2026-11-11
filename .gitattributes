@@ -3,3 +3,8 @@
 
 # Productivity Suite projects are binary; never convert line endings
 *.adpro binary
+
+# Inventor files are binary
+*.ipt binary
+*.iam binary
+*.idw binary
