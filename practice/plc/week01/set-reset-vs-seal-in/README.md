@@ -53,4 +53,4 @@ Test 6: when Set and Reset are both on, Reset wins because it's on the later run
 - Stop → Run in the simulator was used as the power-loss stand-in.
 
 ## Files
-- Productivity Suite project (`practice1.adpro`): to be added.
+- `practice1.adpro`: Productivity Suite 4.7.3 project (saved after test 8, so `Motor_Latch` is retentive). Open it with File > Open Project in Productivity Suite. To run it, start the Simulator and use File > Transfer Project > To CPU.

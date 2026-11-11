@@ -1,2 +1,5 @@
 # OpenPLC ladder files (.ld) are not linker scripts; keep them out of the language stats
 *.ld linguist-detectable=false
+
+# Productivity Suite projects are binary; never convert line endings
+*.adpro binary
