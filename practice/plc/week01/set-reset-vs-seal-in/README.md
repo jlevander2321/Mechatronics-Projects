@@ -44,9 +44,9 @@ Bits toggled with Ctrl+T on the contacts while online in Monitor.
 ![Monitor after test 8](monitor-after-test8.png)
 
 ## Conclusion
-The seal-in is the safer choice for a motor. After a power loss it comes back off and needs a deliberate Start press. A retentive SET/RESET latch can restart the motor on its own when power returns, which could injure someone working on the machine. Unexpected start-up is a hazard listed in ISO 12100, and the electrical-equipment standards (IEC 60204-1 / NFPA 79) address restart after a supply interruption (verify the exact clauses against the standards). The PLC's off state is not a substitute for lockout/tagout when working on the machine.
+Seal-in is safer for a motor. After power came back, Motor_Run stayed off until Start was pressed again. The retentive Motor_Latch came back on by itself, so a motor on it could start while someone is working on the machine.
 
-In a test 6 tie, the last rung to write the bit in the scan wins, so rung order sets priority.
+Test 6: when Set and Reset are both on, Reset wins because it's on the later rung.
 
 ## Notes
 - Stop is an NC contact because the simulated stop is a momentary NO bit. On real hardware, wire stop NC and use a NO contact in logic.
